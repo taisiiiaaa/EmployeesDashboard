@@ -1,0 +1,38 @@
+.second-navbar {
+    max-width: 1296px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.filter-sort {
+    display: flex;
+    gap: 18px;
+    align-items: baseline;
+}
+
+table {
+    max-width: 1296px;
+    margin: auto;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: baseline;
+}
+
+#delete-btn:hover {
+    background-color: crimson;
+    transition: 0.2s;
+    color: #fff;
+}
+
+#edit-btn:hover {
+    background-color: #8e8e8e;
+    transition: 0.2s;
+    color: #fff;
+}

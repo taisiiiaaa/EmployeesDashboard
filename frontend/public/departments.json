@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Help Desk",
+        "manager": "Alice Swan",
+        "city": "NYC",
+        "location": "Manhatten, block 579, lot 43",
+        "num_of_employees": 49
+    },
+    {
+        "id": 2,
+        "name": "Cybersecurity",
+        "manager": "Anna Rotten",
+        "city": "LA",
+        "location": "Beverly Grove, block 475",
+        "num_of_employees": 111
+    },
+    {
+        "id": 3,
+        "name": "Quality Assurance",
+        "manager": "James Mcgill",
+        "city": "Albuquergue",
+        "location": "st. Wolter White 32",
+        "num_of_employees": 498
+    }
+]

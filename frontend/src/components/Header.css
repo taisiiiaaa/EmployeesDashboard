@@ -1,0 +1,21 @@
+.nav-bar {
+    display: flex;
+}
+
+nav {
+  margin-bottom: 40px;
+}
+
+.me-auto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logout {
+  border: none;
+  color: #ff3b4f;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
