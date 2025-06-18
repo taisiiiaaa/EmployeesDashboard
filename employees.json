@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "full_name": "Wolter White",
+        "email": "wolter.white@company.com",
+        "department": "Sybersecurity",
+        "position": "Senior Security Analyst"
+    },
+    {
+        "id": 2,
+        "full_name": "Saul Goodman",
+        "email": "saul.goodman@company.com",
+        "department": "Sybersecurity",
+        "position": "Senior Security Analyst"
+    }
+]
