@@ -17,7 +17,7 @@ export default function EmployeesPage() {
   const depts = useSelector(state => state.depts.departments);
 
   useEffect(() => {
-    dispatch(getDepts());    
+    dispatch(getDepts());
   }, [dispatch]);
 
   const employees = useSelector(state => state.employees.employees);
@@ -39,9 +39,9 @@ export default function EmployeesPage() {
   useEffect(() => {
     if (empToEdit) {
       fullName.current.value = empToEdit.full_name,
-      email.current.value = empToEdit.email,
-      setSelectedDept(empToEdit.department),
-      position.current.value = empToEdit.position
+        email.current.value = empToEdit.email,
+        setSelectedDept(empToEdit.department),
+        position.current.value = empToEdit.position
     }
   }, [empToEdit]);
 
@@ -87,18 +87,18 @@ export default function EmployeesPage() {
   }
 
   const filteredAndSortedEmployees = [...employees]
-  .filter(e =>
-    e.full_name.toLowerCase().includes(searchQuery.toLowerCase())
-  )
-  .sort((a, b) => {
-    if (sortOrder === 'A-Z') {
-      return a.full_name.localeCompare(b.full_name);
-    } else if (sortOrder === 'Z-A') {
-      return b.full_name.localeCompare(a.full_name);
-    } else {
-      return 0;
-    }
-  });
+    .filter(e =>
+      e.full_name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortOrder === 'A-Z') {
+        return a.full_name.localeCompare(b.full_name);
+      } else if (sortOrder === 'Z-A') {
+        return b.full_name.localeCompare(a.full_name);
+      } else {
+        return 0;
+      }
+    });
 
   return (
     <>
@@ -112,11 +112,11 @@ export default function EmployeesPage() {
             <option value=''>By the employee name</option>
             <option value='A-Z'>From A to Z</option>
             <option value='Z-A'>From Z to A</option>
-          </StyledSelect>        
+          </StyledSelect>
         </div>
         <Button type='button' onClick={handleFormVisibility}>{isFormVisible ? 'Close form' : 'Add employee'}</Button>
       </div>
-      {isFormVisible && 
+      {isFormVisible &&
         <Form name='add-emp'>
           <Heading>{empToEdit ? 'Edit employee' : 'Add new employee'}</Heading>
           <InputField type='text' placeholder='Full name' ref={fullName} className={errors.full_name ? 'input-error' : ''} />
@@ -134,7 +134,7 @@ export default function EmployeesPage() {
       {employees.length === 0 &&
         <Text>No any employees were added lately</Text>
       }
-      {employees.length > 0 &&    
+      {employees.length > 0 &&
         <Table striped bordered hover variant="light">
           <thead>
             <tr>
@@ -146,7 +146,7 @@ export default function EmployeesPage() {
             </tr>
           </thead>
           <tbody>
-            {filteredAndSortedEmployees.map(e => ( 
+            {filteredAndSortedEmployees.map(e => (
               <tr key={e.id}>
                 <th>{e.full_name}</th>
                 <th>{e.email}</th>

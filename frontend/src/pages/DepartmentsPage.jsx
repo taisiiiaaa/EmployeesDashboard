@@ -113,11 +113,11 @@ export default function DepartmentsPage() {
             <option value=''>By the number of employees</option>
             <option value='Ascending'>Ascending</option>
             <option value='Descending'>Descending</option>
-          </StyledSelect>        
+          </StyledSelect>
         </div>
         <Button type='button' onClick={handleFormVisibility}>{isFormVisible ? 'Close form' : 'Add department'}</Button>
       </div>
-      {isFormVisible && 
+      {isFormVisible &&
         <Form name='add-dept'>
           <Heading>{deptToEdit ? 'Edit department' : 'Add new department'}</Heading>
           <InputField type='text' placeholder='Department name' ref={name} className={errors.name ? 'input-error' : ''} />
@@ -131,7 +131,7 @@ export default function DepartmentsPage() {
       {depts.length === 0 &&
         <Text>No any departments were added lately</Text>
       }
-      {depts.length > 0 &&    
+      {depts.length > 0 &&
         <Table striped bordered hover variant="light">
           <thead>
             <tr>
@@ -144,7 +144,7 @@ export default function DepartmentsPage() {
             </tr>
           </thead>
           <tbody>
-            {sortedDepts.map(d => ( 
+            {sortedDepts.map(d => (
               <tr key={d.id}>
                 <th>{d.name}</th>
                 <th>{d.manager}</th>
