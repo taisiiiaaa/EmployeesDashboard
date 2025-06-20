@@ -36,3 +36,8 @@ table {
     transition: 0.2s;
     color: #fff;
 }
+
+.input-error {
+    border: 1px solid #ff3b4f !important;
+    outline: none;
+}

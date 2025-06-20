@@ -13,6 +13,7 @@ export default function DepartmentsPage() {
   const [deptToEdit, setDeptToEdit] = useState(null);
   const [sortOrder, setSortOrder] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [errors, setErrors] = useState({});
 
   const name = useRef();
   const manager = useRef();
@@ -60,6 +61,20 @@ export default function DepartmentsPage() {
       num_of_employees: employees.current.value
     }
 
+    const newErrors = {};
+    Object.entries(newDept).forEach(([key, value]) => {
+      if (key !== 'id' && !value) {
+        newErrors[key] = true;
+      }
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+
     if (deptToEdit) {
       dispatch(editDepartment(newDept));
     } else {
@@ -105,11 +120,11 @@ export default function DepartmentsPage() {
       {isFormVisible && 
         <Form name='add-dept'>
           <Heading>{deptToEdit ? 'Edit department' : 'Add new department'}</Heading>
-          <InputField type='text' placeholder='Department name' ref={name} />
-          <InputField type='text' placeholder='Manager' ref={manager} />
-          <InputField type='text' placeholder='City' ref={city} />
-          <InputField type='text' placeholder='Location' ref={location} />
-          <InputField type='number' placeholder='Number of employees' min='1' ref={employees} />
+          <InputField type='text' placeholder='Department name' ref={name} className={errors.name ? 'input-error' : ''} />
+          <InputField type='text' placeholder='Manager' ref={manager} className={errors.manager ? 'input-error' : ''} />
+          <InputField type='text' placeholder='City' ref={city} className={errors.city ? 'input-error' : ''} />
+          <InputField type='text' placeholder='Location' ref={location} className={errors.location ? 'input-error' : ''} />
+          <InputField type='number' placeholder='Number of employees' min='1' ref={employees} className={errors.num_of_employees ? 'input-error' : ''} />
           <Button type='button' onClick={handleAdd}>{deptToEdit ? 'Save' : 'Add'}</Button>
         </Form>
       }

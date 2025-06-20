@@ -12,6 +12,7 @@ export default function EmployeesPage() {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState('');
+  const [errors, setErrors] = useState({});
 
   const depts = useSelector(state => state.depts.departments);
 
@@ -53,9 +54,19 @@ export default function EmployeesPage() {
       position: position.current.value
     }
 
-    // if (!fullName || !email || !selectedDept || !position) {
-    //   return;
-    // }
+    const newErrors = {};
+    Object.entries(empToAdd).forEach(([key, value]) => {
+      if (key !== 'id' && !value) {
+        newErrors[key] = true;
+      }
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
 
     if (empToEdit) {
       dispatch(editEmployee(empToAdd));
@@ -108,15 +119,15 @@ export default function EmployeesPage() {
       {isFormVisible && 
         <Form name='add-emp'>
           <Heading>{empToEdit ? 'Edit employee' : 'Add new employee'}</Heading>
-          <InputField type='text' placeholder='Full name' ref={fullName} />
-          <InputField type='email' placeholder='Email' ref={email} />
-          <StyledSelect name='depts' value={selectedDept} onChange={event => setSelectedDept(event.target.value)}>
+          <InputField type='text' placeholder='Full name' ref={fullName} className={errors.full_name ? 'input-error' : ''} />
+          <InputField type='email' placeholder='Email' ref={email} className={errors.email ? 'input-error' : ''} />
+          <StyledSelect name='depts' value={selectedDept} onChange={event => setSelectedDept(event.target.value)} className={errors.department ? 'input-error' : ''}>
             <option value=''>Choose department</option>
             {depts.map(d => (
               <option value={d.name} key={d.id}>{d.name}</option>
             ))}
           </StyledSelect>
-          <InputField type='text' placeholder='Position' ref={position} />
+          <InputField type='text' placeholder='Position' ref={position} className={errors.position ? 'input-error' : ''} />
           <Button type='button' onClick={handleAdd}>{empToEdit ? 'Save' : 'Add'}</Button>
         </Form>
       }
